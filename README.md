@@ -1,0 +1,4 @@
+## readme
+---
+
+### inspired by LazyVim
