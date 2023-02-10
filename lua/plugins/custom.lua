@@ -23,18 +23,6 @@ return {
 		},
 	},
 	{
-		"neovim/nvim-lspconfig",
-		---@class PluginLspOpts
-		opts = {
-			---@type lspconfig.options
-			servers = {
-				-- pyright will be automatically installed with mason and loaded with lspconfig
-				golangci_lint_ls = {},
-				gopls = {},
-			},
-		},
-	},
-	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
@@ -82,39 +70,6 @@ return {
 					pythonPath = function()
 						return os.getenv("HOME") .. "/.pyenv/shims/python"
 					end,
-				},
-			}
-			dap.adapters.delve = {
-				type = "server",
-				port = "${port}",
-				executable = {
-					command = "dlv",
-					args = { "dap", "-l", "127.0.0.1:${port}" },
-				},
-			}
-
-			-- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
-			dap.configurations.go = {
-				{
-					type = "delve",
-					name = "Debug",
-					request = "launch",
-					program = "${file}",
-				},
-				{
-					type = "delve",
-					name = "Debug test", -- configuration for debugging test files
-					request = "launch",
-					mode = "test",
-					program = "${file}",
-				},
-				-- works with go.mod packages and sub packages
-				{
-					type = "delve",
-					name = "Debug test (go.mod)",
-					request = "launch",
-					mode = "test",
-					program = "./${relativeFileDirname}",
 				},
 			}
 		end,
@@ -267,7 +222,6 @@ return {
 					nls.builtins.formatting.black,
 					nls.builtins.formatting.stylua,
 					nls.builtins.diagnostics.flake8,
-					nls.builtins.formatting.blue,
 				},
 			}
 		end,
