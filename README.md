@@ -1,4 +1,4 @@
 ## readme
 ---
 
-### inspired by LazyVim
+### inspired by [lazyvim](https://github.com/folke/lazy.nvim)
