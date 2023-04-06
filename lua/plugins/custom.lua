@@ -15,7 +15,6 @@ return {
 		"neovim/nvim-lspconfig",
 		---@class PluginLspOpts
 		opts = {
-			---@type lspconfig.options
 			servers = {
 				-- pyright will be automatically installed with mason and loaded with lspconfig
 				pyright = {},
@@ -26,7 +25,6 @@ return {
 		"neovim/nvim-lspconfig",
 		---@class PluginLspOpts
 		opts = {
-			---@type lspconfig.options
 			servers = {
 				-- pyright will be automatically installed with mason and loaded with lspconfig
 				golangci_lint_ls = {},
@@ -94,29 +92,30 @@ return {
 			}
 
 			-- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
-			dap.configurations.go = {
-				{
-					type = "delve",
-					name = "Debug",
-					request = "launch",
-					program = "${file}",
-				},
-				{
-					type = "delve",
-					name = "Debug test", -- configuration for debugging test files
-					request = "launch",
-					mode = "test",
-					program = "${file}",
-				},
-				-- works with go.mod packages and sub packages
-				{
-					type = "delve",
-					name = "Debug test (go.mod)",
-					request = "launch",
-					mode = "test",
-					program = "./${relativeFileDirname}",
-				},
-			}
+			-- optional for go debug
+			-- dap.configurations.go = {
+			-- 	{
+			-- 		type = "delve",
+			-- 		name = "Debug",
+			-- 		request = "launch",
+			-- 		program = "${file}",
+			-- 	},
+			-- 	{
+			-- 		type = "delve",
+			-- 		name = "Debug test", -- configuration for debugging test files
+			-- 		request = "launch",
+			-- 		mode = "test",
+			-- 		program = "${file}",
+			-- 	},
+			-- 	-- works with go.mod packages and sub packages
+			-- 	{
+			-- 		type = "delve",
+			-- 		name = "Debug test (go.mod)",
+			-- 		request = "launch",
+			-- 		mode = "test",
+			-- 		program = "./${relativeFileDirname}",
+			-- 	},
+			-- }
 		end,
 	},
 	{
@@ -139,6 +138,7 @@ return {
 		end,
 	},
 	{
+		-- snippet extensions
 		"L3MON4D3/LuaSnip",
 		keys = function()
 			return {}
@@ -240,7 +240,8 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		dependencies = { "hrsh7th/cmp-emoji", { "tzachar/cmp-tabnine" }, "zbirenbaum/copilot-cmp" },
+		-- dependencies = { "hrsh7th/cmp-emoji", { "tzachar/cmp-tabnine" }, "zbirenbaum/copilot-cmp" },
+		dependencies = { "hrsh7th/cmp-emoji", "zbirenbaum/copilot-cmp" },
 		---@param opts cmp.ConfigSchema
 		opts = function(_, opts)
 			local cmp = require("cmp")
@@ -248,7 +249,8 @@ return {
 				{ name = "copilot", group_index = 2 },
 				{ name = "emoji" },
 				{ name = "nvim_lsp_signature_help" },
-				{ name = "cmp_tabnine" },
+				{ name = "path" },
+				-- { name = "cmp_tabnine" },
 				{
 					name = "buffer",
 				},
@@ -274,9 +276,8 @@ return {
 	},
 	{
 		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
-		-- build = function()
-		-- 	vim.fn["mkdp#util#install"]()
-		-- end,
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 }
