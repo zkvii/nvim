@@ -42,7 +42,7 @@ return {
 				"gomod",
 				"gosum",
 				"gowork",
-				"help",
+				"vimdoc",
 				"html",
 				"javascript",
 				"json",
@@ -258,7 +258,7 @@ return {
 		end,
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "mason.nvim" },
 		opts = function()
