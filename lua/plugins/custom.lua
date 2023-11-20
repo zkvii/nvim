@@ -27,8 +27,8 @@ return {
 		opts = {
 			servers = {
 				-- pyright will be automatically installed with mason and loaded with lspconfig
-				golangci_lint_ls = {},
-				gopls = {},
+				-- golangci_lint_ls = {},
+				-- gopls = {},
 			},
 		},
 	},
