@@ -19,6 +19,10 @@ map("", "<right>", "<nop>")
 
 map("i", "jj", "<Esc>", { desc = "remap esc" })
 map("i", "jk", "<Esc>", { desc = "remap esc" })
+-- aerial toggle
+map("n", "<leader>at", function()
+	require("aerial").toggle()
+end, { desc = "toggle aerial" })
 
 map("n", "<F5>", function()
 	require("dap").continue({})

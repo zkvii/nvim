@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lsp.none-ls",
+    "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.vscode"
   ],
   "news": {

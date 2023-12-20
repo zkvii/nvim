@@ -280,4 +280,19 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	},
+	{
+		"stevearc/aerial.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 }
